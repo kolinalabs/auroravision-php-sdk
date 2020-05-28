@@ -52,12 +52,12 @@ $data = $client->generation($generationQuery);
 
 ## GenerationQuery (abstract)
 
-| Property | Type | Default | Accept | get/set methods |
-|---|---|---|---|---|
-| $startDate | DateTime | new \DateTime() | \DateTime instance | yes |
-| $endDate | DateTime | new \DateTime('1 month ago') | \DateTime instance | yes |   |
-| $sampleSize | string | Month | One of the options <Min5/Hour/Day/Month/Year> |  yes |
-| $timeZone | string | UTC | One of the timezones available at \DateTimeZone::listIdentifiers() | yes |
+| Property | Type | Default | Accept |
+|---|---|---|---|
+| $startDate | DateTime | new \DateTime() | \DateTime instance |
+| $endDate | DateTime | new \DateTime('1 month ago') | \DateTime instance |
+| $sampleSize | string | Month | One of the options <Min5/Hour/Day/Month/Year> |
+| $timeZone | string | UTC | One of the timezones available at \DateTimeZone::listIdentifiers() |
 
 **_Note on some properties_**
 
