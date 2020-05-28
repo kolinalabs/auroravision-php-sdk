@@ -75,20 +75,22 @@ use KolinaLabs\SolarUtils\AuroraVision\GenerationEnergy;
 // Instance
 $generationQuery = GenerationEnergy::delta();
 
+$result = $client->generation($generationQuery);
+
 // Result format (when there is data)
-$result = [
-    [
-        'start' => 1580846400,
-        'units' => 'kilowatt-hours',
-        'value' => 39.743
-    ],
-    [
-        'start' => 1580886000,
-        'units' => "kilowatt-hours",
-        'value' => 11.609
-    ],
-    // ....
-];
+// $result = [
+//     [
+//         'start' => 1580846400,
+//         'units' => 'kilowatt-hours',
+//         'value' => 39.743
+//     ],
+//     [
+//         'start' => 1580886000,
+//         'units' => "kilowatt-hours",
+//         'value' => 11.609
+//     ],
+//     // ....
+// ];
 ```
 
 ### GenerationPower
@@ -99,17 +101,19 @@ use KolinaLabs\SolarUtils\AuroraVision\GenerationPower;
 // Instance
 $generationQuery = GenerationPower::average();
 
+$result = $client->generation($generationQuery);
+
 // Result format (when there is data)
-$result = [
-    [
-        'start' => 1577844000,
-        'units' => 'watts',
-        'value' => 122470.3644563
-    ],
-    [
-        'start' => 1580522400,
-        'units' => 'watts',
-        'value' => 91121.158631334
-    ]
-];
+// $result = [
+//     [
+//         'start' => 1577844000,
+//         'units' => 'watts',
+//         'value' => 122470.3644563
+//     ],
+//     [
+//         'start' => 1580522400,
+//         'units' => 'watts',
+//         'value' => 91121.158631334
+//     ]
+// ];
 ```
