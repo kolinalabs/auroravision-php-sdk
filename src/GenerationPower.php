@@ -12,26 +12,26 @@
 namespace KolinaLabs\SolarUtils\AuroraVision;
 
 /**
- * GenerationEnergy provides utility methods for parameter
- * manipulation to query generation energy on aurora vision api.
+ * GenerationPower provides utility methods for parameter
+ * manipulation to query generation power on aurora vision api.
  * 
  * @author Claudinei Machado <cjchamado@gmail.com>
  */
-class GenerationEnergy extends GenerationQuery {
+class GenerationPower  extends GenerationQuery {
     /**
      * @var string
      */
-    protected $uriPrefix = 'v1/stats/energy/timeseries';
+    protected $uriPrefix = 'v1/stats/power/timeseries';
 
     /**
      * @var string
      */
-    protected $uriSuffix = 'GenerationEnergy/delta';
+    protected $uriSuffix = 'GenerationPower/average';
 
     /**
-     * Make GenerationEnergy instance
+     * Make GenerationPower instance
      */
-    public static function delta(
+    public static function average(
         \DateTime $startDate = null,
         \DateTime $endDate = null,
         ?string $sampleSize = self::SAMPLE_SIZE_MONTH,

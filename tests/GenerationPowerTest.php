@@ -4,26 +4,17 @@ namespace KolinaLabs\SolarUtils\Auroravision\Tests;
 
 use PHPUnit\Framework\TestCase;
 use KolinaLabs\SolarUtils\AuroraVision\Client;
-use KolinaLabs\SolarUtils\AuroraVision\GenerationEnergy;
+use KolinaLabs\SolarUtils\AuroraVision\GenerationPower;
 
-class GenerationEnergyTest extends TestCase {
-    public function testDefaultInstanceProperties() {
-        $generationQuery = GenerationEnergy::delta();
-
-        $this->assertEquals('UTC', $generationQuery->getTimeZone());
-        $this->assertEquals('Month', $generationQuery->getSampleSize());
-        $this->assertInstanceOf(\DateTime::class, $generationQuery->getStartDate());
-        $this->assertInstanceOf(\DateTime::class, $generationQuery->getEndDate());
-    }
-    
+class GenerationPowerTest extends TestCase {
     public function testFluentSetterModifyProperties() {
-        $generationQuery = GenerationEnergy::delta();
+        $generationQuery = GenerationPower::average();
 
         $modifiers = [
             'timeZone' => 'America/Sao_Paulo',
             'sampleSize' => 'Year',
-            'startDate' => new \DateTime('1 year ago'),
-            'endDate' => new \DateTime()
+            'startDate' => new \DateTime('2 months ago'),
+            'endDate' => new \DateTime('m')
         ];
 
         foreach ($modifiers as $property => $value) {
@@ -38,15 +29,15 @@ class GenerationEnergyTest extends TestCase {
     }
 
     public function testUriFormatter() {
-        $generationQuery = GenerationEnergy::delta();
-        $this->assertEquals("v1/stats/energy/timeseries/123456/GenerationEnergy/delta", $generationQuery->getUri('123456'));
+        $generationQuery = GenerationPower::average();
+        $this->assertEquals("v1/stats/power/timeseries/123456/GenerationPower/average", $generationQuery->getUri('123456'));
     }
 
     /**
      * Request API
      */
     public function testIntegrationWithClientRequest() {
-        $generationQuery = GenerationEnergy::delta();
+        $generationQuery = GenerationPower::average();
 
         $startDate = new \DateTime('2020-01-05T04:00:00');
         $endDate = new \DateTime('2020-02-05T04:00:00');
@@ -54,7 +45,6 @@ class GenerationEnergyTest extends TestCase {
         $generationQuery
             ->setStartDate($startDate)
             ->setEndDate($endDate)
-            ->setSampleSize(GenerationEnergy::SAMPLE_SIZE_HOUR)
         ;
 
         $query = $generationQuery->getQuery();
