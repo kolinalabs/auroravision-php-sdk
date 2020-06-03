@@ -1,7 +1,9 @@
 
+![KolinaLabs & SunMobi](https://cdn.kolinalabs.com/partner-sunmobi.png)
+
 > **Thanks to [Sun Mobi](https://sunmobi.com.br/) for contributions!**
 
-![KolinaLabs & SunMobi](https://cdn.kolinalabs.com/partner-sunmobi.png)
+[![Build Status](https://travis-ci.com/kolinalabs/auroravision-php-sdk.svg?branch=master&status=passed)](https://travis-ci.com/kolinalabs/auroravision-php-sdk)
 
 # Experimental project
 
