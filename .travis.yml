@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 7.3.9
+
+branches:
+  only:
+    - travis-ci
+    - master
+
+before_script:
+  - composer install
+
+script:
+  - composer run-script test
