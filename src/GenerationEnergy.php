@@ -14,10 +14,11 @@ namespace KolinaLabs\SolarUtils\AuroraVision;
 /**
  * GenerationEnergy provides utility methods for parameter
  * manipulation to query generation energy on aurora vision api.
- * 
+ *
  * @author Claudinei Machado <cjchamado@gmail.com>
  */
-class GenerationEnergy extends GenerationQuery {
+class GenerationEnergy extends GenerationQuery
+{
     /**
      * @var string
      */

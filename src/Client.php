@@ -14,10 +14,11 @@ namespace KolinaLabs\SolarUtils\AuroraVision;
 /**
  * Client provides utility methods for api authentication
  * and handle request from resources
- * 
+ *
  * @author Claudinei Machado <cjchamado@gmail.com>
  */
-class Client extends \GuzzleHttp\Client {
+class Client extends \GuzzleHttp\Client
+{
     /**
      * @var string
      */
@@ -42,7 +43,8 @@ class Client extends \GuzzleHttp\Client {
      * @param string $apiAuth (eg: "Basic abcde12345=")
      * @param string $identity (eg: 1543210)
      */
-    function __construct(string $apiKey, string $apiAuth, string $identity, array $options = []) {
+    public function __construct(string $apiKey, string $apiAuth, string $identity, array $options = [])
+    {
         $this->apiKey = $apiKey;
         $this->apiAuth = $apiAuth;
         $this->identity = $identity;
@@ -53,7 +55,8 @@ class Client extends \GuzzleHttp\Client {
     /**
      * Autheticate with credentials
      */
-    public function authenticate() {
+    public function authenticate()
+    {
         $response = $this->request('GET', 'authenticate', [
             'headers' => [
                 'X-AuroraVision-ApiKey' => $this->apiKey,
@@ -72,7 +75,8 @@ class Client extends \GuzzleHttp\Client {
     /**
      * Get the plant information
      */
-    public function getPlantInfo() {
+    public function getPlantInfo()
+    {
         $response = $this->request('GET', sprintf('v1/plant/%s/billingData', $this->identity), [
             'headers' => [
                 'X-AuroraVision-Token' => $this->authenticate()
@@ -85,7 +89,8 @@ class Client extends \GuzzleHttp\Client {
     /**
      * Request generation query
      */
-    public function generation(GenerationQuery $generationQuery): array {
+    public function generation(GenerationQuery $generationQuery): array
+    {
         $response = $this->request('GET', $generationQuery->getURI($this->identity), [
             'query' => $generationQuery->getQuery(),
             'headers' => [
@@ -99,7 +104,8 @@ class Client extends \GuzzleHttp\Client {
     /**
      * @return Client
      */
-    public static function create(string $apiKey, string $apiAuth, string $identity, array $options = []): self {
+    public static function create(string $apiKey, string $apiAuth, string $identity, array $options = []): self
+    {
         return new self($apiKey, $apiAuth, $identity, $options);
     }
 
@@ -107,7 +113,8 @@ class Client extends \GuzzleHttp\Client {
      * @param \GuzzleHttp\Psr7\Response $response
      * @return array
      */
-    private function parseResult(\GuzzleHttp\Psr7\Response $response): array {
+    private function parseResult(\GuzzleHttp\Psr7\Response $response): array
+    {
         $data = json_decode($response->getBody()->getContents(), true);
         return $data['result'];
     }

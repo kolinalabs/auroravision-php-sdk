@@ -6,8 +6,10 @@ use PHPUnit\Framework\TestCase;
 use KolinaLabs\SolarUtils\AuroraVision\Client;
 use KolinaLabs\SolarUtils\AuroraVision\GenerationEnergy;
 
-class GenerationEnergyTest extends TestCase {
-    public function testDefaultInstanceProperties() {
+class GenerationEnergyTest extends TestCase
+{
+    public function testDefaultInstanceProperties()
+    {
         $generationQuery = GenerationEnergy::delta();
 
         $this->assertEquals('UTC', $generationQuery->getTimeZone());
@@ -16,7 +18,8 @@ class GenerationEnergyTest extends TestCase {
         $this->assertInstanceOf(\DateTime::class, $generationQuery->getEndDate());
     }
     
-    public function testFluentSetterModifyProperties() {
+    public function testFluentSetterModifyProperties()
+    {
         $generationQuery = GenerationEnergy::delta();
 
         $modifiers = [
@@ -37,15 +40,20 @@ class GenerationEnergyTest extends TestCase {
         }
     }
 
-    public function testUriFormatter() {
+    public function testUriFormatter()
+    {
         $generationQuery = GenerationEnergy::delta();
-        $this->assertEquals("v1/stats/energy/timeseries/123456/GenerationEnergy/delta", $generationQuery->getUri('123456'));
+        
+        $expectedUri = 'v1/stats/energy/timeseries/123456/GenerationEnergy/delta';
+
+        $this->assertEquals($expectedUri, $generationQuery->getUri('123456'));
     }
 
     /**
      * Request API
      */
-    public function testIntegrationWithClientRequest() {
+    public function testIntegrationWithClientRequest()
+    {
         $generationQuery = GenerationEnergy::delta();
 
         $startDate = new \DateTime('2020-01-05T04:00:00');

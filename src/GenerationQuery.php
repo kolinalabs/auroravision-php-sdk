@@ -14,10 +14,11 @@ namespace KolinaLabs\SolarUtils\AuroraVision;
 /**
  * GenerationQuery provides common utility methods for parameter
  * manipulation to query generation on aurora vision api.
- * 
+ *
  * @author Claudinei Machado <cjchamado@gmail.com>
  */
-abstract class GenerationQuery {
+abstract class GenerationQuery
+{
     const SAMPLE_SIZE_MIN = 'Min5';
     const SAMPLE_SIZE_HOUR = 'Hour';
     const SAMPLE_SIZE_DAY = 'Day';
@@ -83,7 +84,8 @@ abstract class GenerationQuery {
      * @param \DateTime $startDate
      * @return $this
      */
-    public function setStartDate(\DateTime $startDate): self {
+    public function setStartDate(\DateTime $startDate): self
+    {
         $this->startDate = $startDate;
         return $this;
     }
@@ -91,7 +93,8 @@ abstract class GenerationQuery {
     /**
      * @return \DateTime
      */
-    public function getStartDate(): \DateTime {
+    public function getStartDate(): \DateTime
+    {
         return $this->startDate;
     }
 
@@ -99,7 +102,8 @@ abstract class GenerationQuery {
      * @param \DateTime $endDate
      * @return $this
      */
-    public function setEndDate(\DateTime $endDate): self {
+    public function setEndDate(\DateTime $endDate): self
+    {
         $this->endDate = $endDate;
         return $this;
     }
@@ -107,7 +111,8 @@ abstract class GenerationQuery {
     /**
      * @return \DateTime
      */
-    public function getEndDate(): \DateTime {
+    public function getEndDate(): \DateTime
+    {
         return $this->endDate;
     }
 
@@ -115,7 +120,8 @@ abstract class GenerationQuery {
      * @param string $timeZone
      * @return $this
      */
-    public function setTimeZone(string $timeZone): self {
+    public function setTimeZone(string $timeZone): self
+    {
         if (!\in_array($timeZone, \DateTimeZone::listIdentifiers(), true)) {
             throw new \InvalidArgumentException('Invalid timeZone.');
         }
@@ -127,7 +133,8 @@ abstract class GenerationQuery {
     /**
      * @return string
      */
-    public function getTimezone(): string {
+    public function getTimezone(): string
+    {
         return $this->timeZone;
     }
 
@@ -135,7 +142,8 @@ abstract class GenerationQuery {
      * @param string $sampleSize
      * @return $this
      */
-    public function setSampleSize(string $sampleSize): self {
+    public function setSampleSize(string $sampleSize): self
+    {
         if (!\in_array($sampleSize, self::SAMPLE_SIZES, true)) {
             throw new \InvalidArgumentException('Invalid sampleSize.');
         }
@@ -147,14 +155,16 @@ abstract class GenerationQuery {
     /**
      * @return string
      */
-    public function getSampleSize(): string {
+    public function getSampleSize(): string
+    {
         return $this->sampleSize;
     }
 
     /**
      * @return array
      */
-    public function getQuery(): array {
+    public function getQuery(): array
+    {
         return [
             'sampleSize' => $this->sampleSize,
             'timeZone' => $this->timeZone,
@@ -165,11 +175,12 @@ abstract class GenerationQuery {
 
     /**
      * Format URI with prefix/identity/suffix
-     * 
+     *
      * @param string $identity
      * @return string $uri
      */
-    public function getUri($identity): string {
+    public function getUri($identity): string
+    {
         return sprintf('%s/%s/%s', $this->uriPrefix, $identity, $this->uriSuffix);
     }
 }

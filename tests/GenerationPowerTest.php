@@ -6,8 +6,10 @@ use PHPUnit\Framework\TestCase;
 use KolinaLabs\SolarUtils\AuroraVision\Client;
 use KolinaLabs\SolarUtils\AuroraVision\GenerationPower;
 
-class GenerationPowerTest extends TestCase {
-    public function testFluentSetterModifyProperties() {
+class GenerationPowerTest extends TestCase
+{
+    public function testFluentSetterModifyProperties()
+    {
         $generationQuery = GenerationPower::average();
 
         $modifiers = [
@@ -28,15 +30,20 @@ class GenerationPowerTest extends TestCase {
         }
     }
 
-    public function testUriFormatter() {
+    public function testUriFormatter()
+    {
         $generationQuery = GenerationPower::average();
-        $this->assertEquals("v1/stats/power/timeseries/123456/GenerationPower/average", $generationQuery->getUri('123456'));
+
+        $expectedUri = 'v1/stats/power/timeseries/123456/GenerationPower/average';
+
+        $this->assertEquals($expectedUri, $generationQuery->getUri('123456'));
     }
 
     /**
      * Request API
      */
-    public function testIntegrationWithClientRequest() {
+    public function testIntegrationWithClientRequest()
+    {
         $generationQuery = GenerationPower::average();
 
         $startDate = new \DateTime('2020-01-05T04:00:00');

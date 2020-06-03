@@ -5,8 +5,10 @@ namespace KolinaLabs\SolarUtils\Auroravision\Tests;
 use PHPUnit\Framework\TestCase;
 use KolinaLabs\SolarUtils\AuroraVision\Client;
 
-class ClientTest extends TestCase {
-    public function testAuthentication() {
+class ClientTest extends TestCase
+{
+    public function testAuthentication()
+    {
         $client = $this->createClient();
 
         $token = $client->authenticate();
@@ -14,7 +16,8 @@ class ClientTest extends TestCase {
         $this->assertNotNull($token);
     }
 
-    public function testRequestPlantInfo() {
+    public function testRequestPlantInfo()
+    {
         $client = $this->createClient();
 
         $data = $client->getPlantInfo();
@@ -22,7 +25,8 @@ class ClientTest extends TestCase {
         $this->assertTrue(is_array($data));
     }
 
-    private function createClient() {
+    private function createClient()
+    {
         return Client::create($_ENV['API_KEY'], $_ENV['API_AUTH'], $_ENV['ENTITY_ID']);
     }
 }

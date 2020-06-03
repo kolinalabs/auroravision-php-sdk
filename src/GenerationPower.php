@@ -14,10 +14,11 @@ namespace KolinaLabs\SolarUtils\AuroraVision;
 /**
  * GenerationPower provides utility methods for parameter
  * manipulation to query generation power on aurora vision api.
- * 
+ *
  * @author Claudinei Machado <cjchamado@gmail.com>
  */
-class GenerationPower  extends GenerationQuery {
+class GenerationPower extends GenerationQuery
+{
     /**
      * @var string
      */
